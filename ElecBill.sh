@@ -17,6 +17,13 @@ else
 fi
 
 amount=$(( units * rate_per_unit ))
+tax=0
+
+if (( amount > 500 )); then
+  tax=$(( amount * 5 / 100 ))
+fi
+
+total=$(( amount + tax ))
 
 echo "------------------------"
 echo "   ELECTRICITY BILL"
@@ -26,4 +33,6 @@ echo "Meter Reading (last month): $previous_reading"
 echo "Units Consumed: $units"
 echo "Rate per unit: Rs. $rate_per_unit"
 echo "Amount Payable: Rs. $amount"
+echo "Tax Payable: Rs. $tax"
+echo "Total Amount Payable: Rs. $total"
 echo "------------------------"
